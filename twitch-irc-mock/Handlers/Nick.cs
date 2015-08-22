@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using twitch_irc_mock.Responses;
 
 namespace twitch_irc_mock.Handlers
 {
@@ -10,13 +11,13 @@ namespace twitch_irc_mock.Handlers
 			if(args.Length != 1)
 			{
 				session.Open = false;
-				return new[] {new IrcResponse(IrcResponseCode.Notice, "*", "Invalid NICK")};
+				return new IrcResponse[] {new NoticeResponse(session, "Invalid NICK")};
 			}
 
 			if (session.Pass == null)
 			{
 				session.Open = false;
-				return new[] {new IrcResponse(IrcResponseCode.Notice, "*", "Error logging in")};
+				return new IrcResponse[] {new NoticeResponse(session, "Error logging in")};
 			}
 
 			session.Nick = args[0];
@@ -24,7 +25,7 @@ namespace twitch_irc_mock.Handlers
 			List<IrcResponse> responses = new List<IrcResponse>();
 			foreach (Tuple<IrcResponseCode, string> line in Config.WelcomeText)
 			{
-				responses.Add(new IrcResponse(line.Item1, session.Nick, line.Item2));
+				responses.Add(new IrcResponse(line.Item1, session, line.Item2));
 			}
 
 			return responses.ToArray();

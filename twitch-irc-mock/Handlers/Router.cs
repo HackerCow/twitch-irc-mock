@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using twitch_irc_mock.Responses;
 
 namespace twitch_irc_mock.Handlers
 {
@@ -19,14 +21,12 @@ namespace twitch_irc_mock.Handlers
 					return Pass.Handle(args, session);
 				case "NICK":
 					return Nick.Handle(args, session);
+				case "JOIN":
+					return Join.Handle(args, session);
 				case "QUIT":
 					return Quit.Handle(session);
 				default:
-					// TODO: ugly hack: appends cmd to username
-					return new[] {new IrcResponse(
-						IrcResponseCode.ErrorUnknownCommand,
-						(session.IsLoggedIn() ? session.Nick : "you ") + cmd,
-						string.Format("Unknown command", cmd))};
+					return new IrcResponse[] {new UnknownCommandResponse(session, cmd)};
 			}
 		}
 	}

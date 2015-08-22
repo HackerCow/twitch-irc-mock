@@ -42,15 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Handlers\Join.cs" />
     <Compile Include="Handlers\Nick.cs" />
     <Compile Include="Handlers\Pass.cs" />
     <Compile Include="Handlers\Quit.cs" />
     <Compile Include="Handlers\Router.cs" />
+    <Compile Include="IrcChannel.cs" />
     <Compile Include="IrcResponse.cs" />
     <Compile Include="IrcResponseCode.cs" />
     <Compile Include="IrcSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\CustomResponse.cs" />
+    <Compile Include="Responses\EchoResponse.cs" />
+    <Compile Include="Responses\NoticeResponse.cs" />
+    <Compile Include="Responses\UnknownCommandResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
