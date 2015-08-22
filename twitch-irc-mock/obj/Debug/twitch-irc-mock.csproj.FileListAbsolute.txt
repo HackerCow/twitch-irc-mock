@@ -1,6 +1,0 @@
-c:\users\christoph\documents\visual studio 2013\Projects\twitch-irc-mock\twitch-irc-mock\bin\Debug\twitch-irc-mock.exe.config
-c:\users\christoph\documents\visual studio 2013\Projects\twitch-irc-mock\twitch-irc-mock\obj\Debug\twitch-irc-mock.csprojResolveAssemblyReference.cache
-c:\users\christoph\documents\visual studio 2013\Projects\twitch-irc-mock\twitch-irc-mock\bin\Debug\twitch-irc-mock.exe
-c:\users\christoph\documents\visual studio 2013\Projects\twitch-irc-mock\twitch-irc-mock\bin\Debug\twitch-irc-mock.pdb
-c:\users\christoph\documents\visual studio 2013\Projects\twitch-irc-mock\twitch-irc-mock\obj\Debug\twitch-irc-mock.exe
-c:\users\christoph\documents\visual studio 2013\Projects\twitch-irc-mock\twitch-irc-mock\obj\Debug\twitch-irc-mock.pdb
