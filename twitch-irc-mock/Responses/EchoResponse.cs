@@ -4,20 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace twitch_irc_mock.Responses
+namespace twitch_irc_mock
 {
-	class EchoResponse : IrcResponse
+	namespace Responses
 	{
-		public string Command;
-
-		public EchoResponse(IrcSession user, string command) : base(IrcResponseCode.Null, user, "")
+		class EchoResponse : IrcResponse
 		{
-			Command = command;
-		}
+			public string Command;
 
-		public override string ToString()
-		{
-			return string.Format(":{0}!{0}@{0}.{1} {2}\r\n", User, Config.Hostname, Command);
+			public EchoResponse(IrcSession user, string command) : base(IrcResponseCode.Null, user, "")
+			{
+				Command = command;
+			}
+
+			public override string ToString()
+			{
+				return string.Format(":{0}!{0}@{0}.{1} {2}\r\n", User, Config.Hostname, Command);
+			}
 		}
 	}
 }

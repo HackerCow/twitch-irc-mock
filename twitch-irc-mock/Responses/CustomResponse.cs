@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace twitch_irc_mock.Responses
+namespace twitch_irc_mock
 {
-	class CustomResponse : IrcResponse
+	namespace Responses
 	{
-		public CustomResponse(IrcSession user, string message) : base(IrcResponseCode.Null, user, message)
+		class CustomResponse : IrcResponse
 		{
-		}
+			public CustomResponse(IrcSession user, string message) : base(IrcResponseCode.Null, user, message)
+			{
+			}
 
-		public override string ToString()
-		{
-			return Message + "\r\n";
+			public override string ToString()
+			{
+				return Message + "\r\n";
+			}
 		}
 	}
 }

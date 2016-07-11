@@ -1,11 +1,14 @@
-﻿namespace twitch_irc_mock.Handlers
+﻿namespace twitch_irc_mock
 {
-	internal class Quit
+	namespace Handlers
 	{
-		public static IrcResponse[] Handle(IrcSession session)
+		internal static class Quit
 		{
-			session.Open = false;
-			return new IrcResponse[]{};
+			public static IrcResponse[] Handle(IrcSession session)
+			{
+				session.Open = false;
+				return new IrcResponse[]{};
+			}
 		}
 	}
 }

@@ -4,20 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace twitch_irc_mock.Handlers
+namespace twitch_irc_mock
 {
-	internal static class Pass
+	namespace Handlers
 	{
-		public static IrcResponse[] Handle(string[] args, IrcSession session)
+		internal static class Pass
 		{
-			if (args.Length != 1)
+			public static IrcResponse[] Handle(string[] args, IrcSession session)
 			{
-				session.Open = false;
+				if (args.Length != 1)
+				{
+					session.Open = false;
+					return new IrcResponse[] {};
+				}
+
+				session.Pass = args[0];
 				return new IrcResponse[] {};
 			}
-
-			session.Pass = args[0];
-			return new IrcResponse[] {};
 		}
 	}
 }

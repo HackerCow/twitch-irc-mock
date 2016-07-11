@@ -14,6 +14,7 @@ namespace twitch_irc_mock
 		private static void Main(string[] args)
 		{
 			TcpListener listener = new TcpListener(IPAddress.Any, 3333);
+			Console.WriteLine ("started");
 			listener.Start();
 			while (true)
 			{

@@ -4,20 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace twitch_irc_mock.Responses
+namespace twitch_irc_mock
 {
-	class UnknownCommandResponse : IrcResponse
+	namespace Responses
 	{
-		public string Command;
-		public UnknownCommandResponse(IrcSession user, string cmd) : base(IrcResponseCode.ErrorUnknownCommand, user, "")
+		class UnknownCommandResponse : IrcResponse
 		{
-			Command = cmd;
-		}
+			public string Command;
+			public UnknownCommandResponse(IrcSession user, string cmd) : base(IrcResponseCode.ErrorUnknownCommand, user, "")
+			{
+				Command = cmd;
+			}
 
-		public override string ToString()
-		{
-			return string.Format(":{0} {1} {2} {3} :Unknown Command", Config.Hostname, IrcResponseCode.ErrorUnknownCommand,
-				User.IsLoggedIn() ? User.Nick : "you", Command);
+			public override string ToString()
+			{
+				return string.Format(":{0} {1} {2} {3} :Unknown Command", Config.Hostname, IrcResponseCode.ErrorUnknownCommand,
+					User.IsLoggedIn() ? User.Nick : "you", Command);
+			}
 		}
 	}
 }

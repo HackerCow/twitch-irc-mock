@@ -6,27 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using twitch_irc_mock.Responses;
 
-namespace twitch_irc_mock.Handlers
+namespace twitch_irc_mock
 {
-	class Router
+	namespace Handlers
 	{
-		public static IrcResponse[] HandleCommand(string req, IrcSession session)
+		static class Router
 		{
-			string[] parts = req.Split(' ');
-			string cmd = parts[0].ToUpper();
-			string[] args = parts.Skip(1).ToArray();
-			switch (cmd)
+			public static IrcResponse[] HandleCommand(string req, IrcSession session)
 			{
-				case "PASS":
-					return Pass.Handle(args, session);
-				case "NICK":
-					return Nick.Handle(args, session);
-				case "JOIN":
-					return Join.Handle(args, session);
-				case "QUIT":
-					return Quit.Handle(session);
-				default:
-					return new IrcResponse[] {new UnknownCommandResponse(session, cmd)};
+				string[] parts = req.Split(' ');
+				string cmd = parts[0].ToUpper();
+				string[] args = parts.Skip(1).ToArray();
+				switch (cmd)
+				{
+					case "PASS":
+						return Pass.Handle(args, session);
+					case "NICK":
+						return Nick.Handle(args, session);
+					case "JOIN":
+						return Join.Handle(args, session);
+					case "QUIT":
+						return Quit.Handle(session);
+					default:
+						return new IrcResponse[] {new UnknownCommandResponse(session, cmd)};
+				}
 			}
 		}
 	}
