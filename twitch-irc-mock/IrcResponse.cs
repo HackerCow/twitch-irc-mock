@@ -23,15 +23,10 @@ namespace twitch_irc_mock
 
 		public static string CodeToString(IrcResponseCode code)
 		{
-			if (code == IrcResponseCode.Notice)
-				return "NOTICE";
-			return ((int) code).ToString("D3");
+			return code == IrcResponseCode.Notice ? "NOTICE" : ((int) code).ToString("D3");
 		}
 
-		public override string ToString()
-		{
-			return string.Format(":{0} {1} {2} :{3}\r\n", Config.Hostname, CodeToString(Code), User.Nick, Message);
-		}
+		public override string ToString() => $":{Config.Hostname} {CodeToString(Code)} {User.Nick} :{Message}\r\n";
 	}
 
 }

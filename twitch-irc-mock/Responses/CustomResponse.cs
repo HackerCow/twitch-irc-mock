@@ -14,10 +14,7 @@ namespace twitch_irc_mock
 			{
 			}
 
-			public override string ToString()
-			{
-				return Message + "\r\n";
-			}
+			public override string ToString() => Message + "\r\n";
 		}
 	}
 }

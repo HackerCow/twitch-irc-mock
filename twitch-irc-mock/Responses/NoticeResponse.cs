@@ -14,10 +14,7 @@ namespace twitch_irc_mock
 			{
 			}
 
-			public override string ToString()
-			{
-				return string.Format(":{0} NOTICE * :{1}\r\n", Config.Hostname, Message);
-			}
+			public override string ToString() => $":{Config.Hostname} NOTICE * :{Message}\r\n";
 		}
 	}
 }

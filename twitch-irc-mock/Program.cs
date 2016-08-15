@@ -11,11 +11,31 @@ namespace twitch_irc_mock
 {
 	class Program
 	{
+		private static int port = 3333;
+
 		private static void Main(string[] args)
 		{
-			TcpListener listener = new TcpListener(IPAddress.Any, 3333);
-			Console.WriteLine ("started");
-			listener.Start();
+			Console.WriteLine("Starting up...");
+			TcpListener listener = new TcpListener(IPAddress.Any, port);
+
+			try
+			{
+				listener.Start();
+			}
+			catch (SocketException)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine($"Error: failed to start (is port {port} already in use?)");
+				Console.ResetColor();
+				return;
+			}
+
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.Write("All done. ");
+			Console.ResetColor();
+			Console.WriteLine($"Serving on port {port}");
+			Console.ResetColor();
+
 			while (true)
 			{
 				Socket client = listener.AcceptSocket();

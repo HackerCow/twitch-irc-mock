@@ -17,10 +17,7 @@ namespace twitch_irc_mock
 				Command = command;
 			}
 
-			public override string ToString()
-			{
-				return string.Format(":{0}!{0}@{0}.{1} {2}\r\n", User, Config.Hostname, Command);
-			}
+			public override string ToString() => $":{User}!{User}@{User}.{Config.Hostname} {Command}\r\n";
 		}
 	}
 }
